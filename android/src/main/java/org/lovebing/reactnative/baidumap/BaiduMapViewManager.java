@@ -128,7 +128,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                 MarkerUtil.updateMaker(marker, option);
             }
             else {
-                marker = MarkerUtil.addMarker(mapView, option);
+                marker = MarkerUtil.addMarker(mReactContext,mapView, option);
                 mMarkerMap.put(key, marker);
             }
         }
@@ -147,7 +147,7 @@ public class BaiduMapViewManager extends ViewGroupManager<MapView> {
                 MarkerUtil.updateMaker(markers.get(i), option);
             }
             else {
-                markers.add(i, MarkerUtil.addMarker(mapView, option));
+                markers.add(i, MarkerUtil.addMarker(mReactContext,mapView, option));
             }
         }
         if(options.size() < markers.size()) {
