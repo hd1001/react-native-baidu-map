@@ -33,12 +33,14 @@ public class MarkerUtil {
     }
     private static String tag = "ReactNativeJS";
     public static Marker addMarker(Context context, MapView mapView, ReadableMap option) {
-
-        String path = context.getFilesDir().getAbsolutePath()+"/"+option.getString("icon");
-        Bitmap icon = BitmapFactory.decodeFile(path);
-        Bitmap scaleIcon = scale(icon);
-        Log.i(tag,"addMarker , fileName = "+path);
-        BitmapDescriptor bitmap = BitmapDescriptorFactory.fromBitmap(radius(scaleIcon));
+        BitmapDescriptor bitmap = null;
+        if(option.hasKey("icon")){
+            String path = context.getFilesDir().getAbsolutePath()+"/"+option.getString("icon");
+            Bitmap icon = BitmapFactory.decodeFile(path);
+            Bitmap scaleIcon = scale(icon);
+            Log.i(tag,"addMarker , fileName = "+path);
+            bitmap = BitmapDescriptorFactory.fromBitmap(radius(scaleIcon));
+        }
         if(bitmap == null){
             bitmap = BitmapDescriptorFactory.fromResource(R.mipmap.icon_gcoding);
         }
